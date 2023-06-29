@@ -1,11 +1,11 @@
 require("dotenv").config({path: './src/utils/envs/.env'});
 const __DEV__ = process.env.NODE_ENV;
-if (__DEV__) {
+if (__DEV__ === 'development') {
   console.log("개발환경");
-  require("dotenv").config({path: './src/utils/envs/.env.dev'});
+  require("dotenv").config({path: './src/utils/envs/.env.development'});
 } else {
   console.log('운영환경');
-  require("dotenv").config({path: './src/utils/envs/.env.prod'})
+  require("dotenv").config({path: './src/utils/envs/.env.production'})
 }
 
 const createError = require('http-errors');
