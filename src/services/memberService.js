@@ -5,13 +5,13 @@ const getConnection = require("../utils/database/getConnection");
  * 회원 상세조회
  * @returns {Promise<{member: *}>}
  */
-const getMemberService = async () => {
+const getMemberService = async (memberpkey) => {
   let connection;
   try{
     connection = await getConnection(); //  connection pool 가져옴
     connection.beginTransaction();
 
-    const member = await getMemberModel(connection, 1);
+    const member = await getMemberModel(connection, memberpkey);
     connection.commit(); // transaction 인경우
     return {member: member[0]};
 

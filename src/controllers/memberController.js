@@ -4,8 +4,16 @@ const {jwtVerify} = require("../utils/jwt/index");
 
 const signInController = async (req, res) => {
   try{
-    const {member} = await memberService.getMemberService();
+    const {member} = await memberService.getMemberService(1);
     return response(res,200,"0000", '', member);
+  } catch (err) {
+    return response(res,500,"9999", err.message, err);
+  }
+}
+
+const signUpController = async (req, res) => {
+  try{
+    return response(res,200,"0000", '', {});
   } catch (err) {
     return response(res,500,"9999", err.message, err);
   }
@@ -33,5 +41,6 @@ const tokenVerifyController = async (req, res) => {
 
 module.exports = {
   signInController,
+  signUpController,
   tokenVerifyController,
 }

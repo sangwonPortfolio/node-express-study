@@ -1,4 +1,4 @@
-const resMessage = require("../response/resMessage");
+const message = require("./message");
 
 /**
  * response util
@@ -11,9 +11,9 @@ const resMessage = require("../response/resMessage");
  */
 const response = (res, statusCode, resCode, msg = '', body = {}) => {
   if (statusCode === 500) {
-    return res.status(statusCode).json({resCode: resCode, msg: msg === ''? resMessage[resCode] !== undefined? resMessage[resCode]: '': msg, error: body})
+    return res.status(statusCode).json({resCode: resCode, msg: msg === ''? message[resCode] !== undefined? message[resCode]: '': msg, error: body})
   } else {
-    return res.status(statusCode).json({resCode: resCode, msg: msg === ''? resMessage[resCode] !== undefined? resMessage[resCode]: '': msg, body: body})
+    return res.status(statusCode).json({resCode: resCode, msg: msg === ''? message[resCode] !== undefined? message[resCode]: '': msg, body: body})
   }
 }
 
