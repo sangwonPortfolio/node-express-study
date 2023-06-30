@@ -5,7 +5,7 @@ const getConnection = require("../utils/database/getConnection");
  * 회원 상세조회
  * @returns {Promise<{member: *}>}
  */
-const getMemberService = async (memberpkey) => {
+exports.getMemberService = async (memberpkey) => {
   let connection;
   try{
     connection = await getConnection(); //  connection pool 가져옴
@@ -27,8 +27,4 @@ const getMemberService = async (memberpkey) => {
   } finally {
     connection.release();
   }
-}
-
-module.exports = {
-  getMemberService,
 }

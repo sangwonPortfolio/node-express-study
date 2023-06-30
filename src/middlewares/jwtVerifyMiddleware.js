@@ -3,7 +3,7 @@ const getConnection = require("../utils/database/getConnection");
 const response = require("../utils/response/index");
 const memTokenModel = require("../models/memTokenModel");
 
-const jwtVerifyMiddleware = async (req, res, next) => {
+exports.jwtVerifyMiddleware = async (req, res, next) => {
   let connection;
   try{
     connection = await getConnection();
@@ -37,8 +37,4 @@ const jwtVerifyMiddleware = async (req, res, next) => {
   } finally {
     connection.release();
   }
-}
-
-module.exports = {
-  jwtVerifyMiddleware,
 }
